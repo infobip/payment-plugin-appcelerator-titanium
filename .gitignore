@@ -1,0 +1,10 @@
+tmp
+bin
+build
+*.zip
+.apt_generated
+build.properties
+hooks
+platform
+assets
+libs
