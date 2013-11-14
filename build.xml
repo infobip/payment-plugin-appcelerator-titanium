@@ -1,6 +1,6 @@
-<project name="mpayments_paymentapi_android_titanium" default="dist">
+<project name="appcelerator_mpayments" default="dist">
 	<description>
-		Ant build script for Titanium Android module mpayments_paymentapi_android_titanium
+		Ant build script for Titanium Android module appcelerator_mpayments
 	</description>
 
 	<property name="ti.module.root" location="${basedir}"/>

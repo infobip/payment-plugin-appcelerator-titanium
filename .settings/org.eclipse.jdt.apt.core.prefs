@@ -4,4 +4,4 @@ org.eclipse.jdt.apt.aptEnabled=true
 org.eclipse.jdt.apt.genSrcDir=.apt_generated
 org.eclipse.jdt.apt.reconcileEnabled=true
 
-org.eclipse.jdt.apt.processorOptions/kroll.jsonFile=mpayments_paymentapi_android_titanium.json
+org.eclipse.jdt.apt.processorOptions/kroll.jsonFile=appcelerator_mpayments.json
