@@ -1,11 +1,10 @@
-# appcelerator_mpayments Module
+# Centili Mobile Payments Module for Appcelerator Titanium
 
 ## Description
 
-This project is Titanium Module  which can be merged with your Titanium project and enable you to use Centili Mobile Payments system.
+This project is Titanium Module which can be merged with your Titanium project and enable you to use Centili Mobile Payments system. This is module for Android only.
 
-
-## Accessing the appcelerator_mpayments Module
+## Accessing the module
 
 To access this module from JavaScript, you would do the following:
 
@@ -15,24 +14,23 @@ The appcelerator_mpayments variable is a reference to the Module object.
 
 ## Step by step integration
 
-  1.  Access the apcelerator_mpayments Modul by require("c.mpayments.appcelerator").
+  1.  Access the appcelerator_mpayments Module by `require("c.mpayments.appcelerator")`.
 
-  2.  Make PurchaseRequest object with ApiKey as only mandatory field (you can also use other optional field like clientId).
+  2.  Make `PurchaseRequest` object with `ApiKey` as only mandatory field (you can also use other optional fields like `packageIndex`).
 
-  3.  Start purchase by calling  appcelerator_mpayments.startPurchase(PurchaseRequest);
+  3.  Start purchase by calling `startPurchase(PurchaseRequest)` method on your `c.mpayments.appcelerator` instance.
 
+  4.  Your callback method will be invoked upon completing payment request. All you have to do is handle payment result in your application.
 
-  4.  Your callback method will be invoked upon completing payment request. All you have to do is handle payment result in your application. 
-
-  appcelerator_mpayments.addEventListener('onPurchaseSuccess', onSuccess);
-  appcelerator_mpayments.addEventListener('onPurchasePending', onPending);
-  appcelerator_mpayments.addEventListener('onPurchaseFailed', onFailed);
-  appcelerator_mpayments.addEventListener('onPurchaseCancelled', onCancelled);  
+	    appcelerator_mpayments.addEventListener('onPurchaseSuccess', onSuccess);
+	    appcelerator_mpayments.addEventListener('onPurchasePending', onPending);
+	    appcelerator_mpayments.addEventListener('onPurchaseFailed', onFailed);
+	    appcelerator_mpayments.addEventListener('onPurchaseCancelled', onCancelled);  
 
 ### Additional methods
 
-You can get and set appcelerator_payments.DebugMode to true or false to get our logger output debug data. Defaults to false.
-You can also set or appcelerator_payments.PendingTransactionHandlingEnabled, which will influence whether will we continue pending payment when new payment request is sent, or will we start a new payment request.
+You can get and set `DebugMode` to true or false to get our logger output debug data. Defaults to false.
+You can also set `PendingTransactionHandlingEnabled` true or false, which will influence whether will we continue pending payment when new payment request is sent, or will we start a new payment request.
 Default is true, which means that we will try to resume unresolved transaction.
 
 ## Usage example
@@ -64,31 +62,31 @@ Default is true, which means that we will try to resume unresolved transaction.
 	win.add(label);
 	win.open();
 	
-	var appcelerator_mpayments=require("c.mpayments.appcelerator");
+	var appcelerator_mpayments = require("c.mpayments.appcelerator");
 	Titanium.API.info("module is => " + appcelerator_mpayments);
 	
 	var onCancelled = function(data) {
-	Ti.API.info("Tranaction is CANCELLED:" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount + ' of ' + data.itemName);
+	Ti.API.info("Transaction status is CANCELLED:" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount);
 	};
 	
 	var onSuccess = function(data) {
-	Ti.API.info("Tranaction is SUCCESS: " + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount + ' of ' + data.itemName + ' test = ' + data.test);
+	Ti.API.info("Transaction status is SUCCESS: " + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount + ' test = ' + data.test);
 	};
 	
 	var onFailed = function(data) {
-	Ti.API.info(" Tranaction is FAILD:" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount + ' of ' + data.itemName);
+	Ti.API.info("Transaction status is FAILED:" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount);
 	};
 	
 	var onPending = function(data) {
-	Ti.API.info("Tranaction is PENDING :" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount + ' of ' + data.itemName);
+	Ti.API.info("Transaction status is PENDING :" + data.apiKey + ' ; ' + data.clientId + ' ; ' + data.itemAmount);
 	};
 	
 	function testExample(){
 		appcelerator_mpayments.setDebugModeEnabled(true);
 	    appcelerator_mpayments.setPendingTransactionHandlingEnabled(false);
-		var PurchaseRequest={
+		var PurchaseRequest = {
 			apiKey: '28550ec26491d4ed1b1de6fd3fe2b92a',
-			clientId: 'Nena'
+			clientId: 'test-client-id'
 		};
 		appcelerator_mpayments.startPurchase(PurchaseRequest);
 	}
@@ -98,6 +96,6 @@ Default is true, which means that we will try to resume unresolved transaction.
 	appcelerator_mpayments.addEventListener('onPurchaseCancelled', onCancelled);
 	
 
-## Author
+## Authors
 
-Framework Integration Team @ Infobip Belgrade, Serbia
+Framework Integration Team @ Infobip Ltd.
