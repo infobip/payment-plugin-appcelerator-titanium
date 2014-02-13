@@ -1,26 +1,28 @@
-# Centili Mobile Payments Module for Appcelerator Titanium
+# Centili in-app Payment Plugin for Titanium
+
+*only for Android platform*
 
 ## Description
 
-This project is Titanium Module which can be merged with your Titanium project and enable you to use Centili Mobile Payments system. This is module for Android only.
+This project is the Titanium Module which can be merged with your Titanium project and enable you to use the Centili Mobile Payments system. This is module for Android only.
 
 ## Accessing the module
 
-To access this module from JavaScript, you would do the following:
+To access this module from JavaScript, you need to do the following:
 
 	var appcelerator_mpayments = require("c.mpayments.appcelerator");
 
-The appcelerator_mpayments variable is a reference to the Module object.	
+The `appcelerator_mpayments` variable is a reference to the Module object.	
 
 ## Step by step integration
 
   1.  Access the appcelerator_mpayments Module by `require("c.mpayments.appcelerator")`.
 
-  2.  Make `PurchaseRequest` object with `ApiKey` as only mandatory field (you can also use other optional fields like `packageIndex`).
+  2.  Create a `PurchaseRequest` object with the `ApiKey` as only mandatory field (you can also use other optional fields like `packageIndex`).
 
   3.  Start purchase by calling `startPurchase(PurchaseRequest)` method on your `c.mpayments.appcelerator` instance.
 
-  4.  Your callback method will be invoked upon completing payment request. All you have to do is handle payment result in your application.
+  4.  Your call-back method will be invoked upon completing the payment request. All you have to do is handle the payment result in your application.
 
 	    appcelerator_mpayments.addEventListener('onPurchaseSuccess', onSuccess);
 	    appcelerator_mpayments.addEventListener('onPurchasePending', onPending);
@@ -29,9 +31,9 @@ The appcelerator_mpayments variable is a reference to the Module object.
 
 ### Additional methods
 
-You can get and set `DebugMode` to true or false to get our logger output debug data. Defaults to false.
-You can also set `PendingTransactionHandlingEnabled` true or false, which will influence whether will we continue pending payment when new payment request is sent, or will we start a new payment request.
-Default is true, which means that we will try to resume unresolved transaction.
+You can get and set `DebugMode` to 'true' or 'false' to get our logger output debug data. Defaults to false.
+You can also set `PendingTransactionHandlingEnabled` 'true' or 'false', which will influence whether we will continue the pending payment when new a payment request is sent, or we will start a new payment request.
+Default is 'true', which means that we will try to resume the unresolved transaction by default.
 
 ## Usage example
 
